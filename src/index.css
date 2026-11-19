@@ -1,22 +1,65 @@
 :root {
-  font-family: system-ui, sans-serif;
+  --paper: #faf9f6;
+  --ink: #26231f;
+  --muted: #6b6560;
+  --accent: #7a2e24;
+  --accent-dark: #4e1c16;
+  --rule: rgba(38, 35, 31, 0.12);
+
+  font-family: 'EB Garamond', Georgia, serif;
   line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
   margin: 0;
 }
 
-.site-header nav {
-  display: flex;
-  gap: 1.5rem;
-  padding: 1rem 2rem;
+a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
-.site-header a.active {
-  font-weight: bold;
+a:hover {
+  color: var(--accent-dark);
 }
 
-main {
-  padding: 2rem;
+.paper-grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  z-index: 10;
+}
+
+/* Underline that draws in from the left on hover */
+.ink-underline {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.45s ease;
+}
+
+.ink-underline:hover {
+  background-size: 100% 1px;
+}
+
+.footnotes-rule {
+  width: 180px;
+  border-top: 1px solid rgba(38, 35, 31, 0.45);
+}
+
+.footnote-number {
+  display: inline-block;
+  width: 18px;
+  color: var(--accent);
 }

@@ -2,12 +2,9 @@ import { Link } from 'react-router'
 
 function NotFound() {
   return (
-    <section>
-      <h1>Page not found</h1>
-      <p>
-        <Link to="/">Back to home</Link>
-      </p>
-    </section>
+    <p className="chapter-subtitle">
+      This page isn't in the book. <Link to="/">Back to the home page</Link>.
+    </p>
   )
 }
 

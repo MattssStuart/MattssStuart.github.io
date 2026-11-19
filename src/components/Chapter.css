@@ -1,0 +1,148 @@
+.chapter {
+  max-width: 1120px;
+  min-height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 48px 72px;
+  display: flex;
+  flex-direction: column;
+}
+
+.running-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.running-head a {
+  color: var(--muted);
+}
+
+.running-head a:hover {
+  color: var(--accent);
+}
+
+/* Titles that slide between the header and the chapter opener */
+.flip {
+  transform-origin: top left;
+}
+
+.chapter-body {
+  flex: 1;
+}
+
+.chapter-opener {
+  margin-top: 104px;
+}
+
+.chapter-label {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chapter-title {
+  display: inline-block;
+  margin: 14px 0 0;
+  font-size: clamp(56px, 7vw, 80px);
+  line-height: 1;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.chapter-subtitle {
+  margin: 22px 0 0;
+  font-size: 21px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.chapter-stack {
+  display: grid;
+}
+
+/* Old and new content share the same spot while one fades into the other */
+.chapter-stack > * {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.chapter-leave {
+  pointer-events: none;
+  animation: chapter-leave 0.45s ease both;
+}
+
+.chapter-arrive {
+  animation: chapter-arrive 0.8s ease 0.6s both;
+}
+
+@keyframes chapter-leave {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes chapter-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-leave,
+  .chapter-arrive {
+    animation: none;
+  }
+}
+
+.chapter-footer {
+  padding-top: 96px;
+}
+
+.chapter-footer-row {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 40px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.chapter-footnotes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+}
+
+.folio {
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .chapter {
+    padding: 32px 24px;
+  }
+
+  .chapter-opener {
+    margin-top: 64px;
+  }
+}

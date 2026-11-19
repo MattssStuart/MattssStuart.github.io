@@ -1,0 +1,147 @@
+.book {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  perspective: 1800px;
+  background: var(--paper);
+}
+
+.book-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.book-page {
+  min-height: 100vh;
+}
+
+.book-leaf {
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+  transition: transform 1.3s cubic-bezier(0.6, 0.04, 0.3, 1);
+}
+
+/* Going forward, the right half of the old page turns over to the left */
+.book-forward .book-stay,
+.book-forward .book-leaf-back {
+  clip-path: inset(0 50% 0 0);
+}
+
+.book-forward .book-leaf-front {
+  clip-path: inset(0 0 0 50%);
+  transform: rotateY(0deg);
+}
+
+.book-forward .book-leaf-back {
+  transform: rotateY(180deg);
+}
+
+.book-forward.is-turning .book-leaf-front {
+  transform: rotateY(-180deg);
+}
+
+/* Going back, the left half of the old page turns over to the right */
+.book-back .book-stay,
+.book-back .book-leaf-back {
+  clip-path: inset(0 0 0 50%);
+}
+
+.book-back .book-leaf-front {
+  clip-path: inset(0 50% 0 0);
+  transform: rotateY(0deg);
+}
+
+.book-back .book-leaf-back {
+  transform: rotateY(-180deg);
+}
+
+.book-back.is-turning .book-leaf-front {
+  transform: rotateY(180deg);
+}
+
+.is-turning .book-leaf-back {
+  transform: rotateY(0deg);
+}
+
+/* Shading that makes the turn read as paper in light */
+.book-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* The turning page darkens as it tilts away from the light */
+.book-leaf .book-shade {
+  background: rgba(38, 35, 31, 0.45);
+  transition: opacity 1.3s cubic-bezier(0.6, 0.04, 0.3, 1);
+}
+
+.book-leaf-back .book-shade,
+.is-turning .book-leaf-front .book-shade {
+  opacity: 1;
+}
+
+.is-turning .book-leaf-back .book-shade {
+  opacity: 0;
+}
+
+/* Shadow the lifted page casts beside the spine */
+.book-forward .book-under .book-shade,
+.book-back .book-stay .book-shade {
+  background: linear-gradient(
+    to right,
+    transparent 50%,
+    rgba(38, 35, 31, 0.28) 50%,
+    transparent 72%
+  );
+}
+
+.book-back .book-under .book-shade,
+.book-forward .book-stay .book-shade {
+  background: linear-gradient(
+    to left,
+    transparent 50%,
+    rgba(38, 35, 31, 0.28) 50%,
+    transparent 72%
+  );
+}
+
+.is-turning .book-under .book-shade {
+  animation: shade-early 1.3s ease both;
+}
+
+.is-turning .book-stay .book-shade {
+  animation: shade-late 1.3s ease both;
+}
+
+@keyframes shade-early {
+  0% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shade-late {
+  0%,
+  45% {
+    opacity: 0;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

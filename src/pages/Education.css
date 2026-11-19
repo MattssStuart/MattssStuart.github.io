@@ -1,0 +1,243 @@
+.education-entry {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(38, 35, 31, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 48px;
+}
+
+.education-dates {
+  flex: 0 0 180px;
+  padding-top: 8px;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.education-detail {
+  flex: 999 1 480px;
+  min-width: 0;
+}
+
+.education-title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+.education-place {
+  margin: 6px 0 0;
+  font-size: 19px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.education-note {
+  margin: 16px 0 0;
+  font-size: 19px;
+  line-height: 1.65;
+  max-width: 34em;
+}
+
+.education-switch {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 28px;
+}
+
+.education-switch.is-large {
+  margin-top: 40px;
+  justify-content: center;
+  gap: 0 40px;
+}
+
+.education-switch button {
+  border: 0;
+  margin: 0;
+  padding: 12px 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.education-switch.is-large button {
+  font-size: 16px;
+}
+
+.education-switch button:hover,
+.education-switch button[aria-pressed='true'] {
+  color: var(--accent);
+}
+
+.education-switch button[aria-pressed='true'] {
+  background-size: 100% 1px;
+}
+
+/* Soft fade when switching what is shown */
+.education-fade {
+  animation: education-fade 0.5s ease both;
+}
+
+@keyframes education-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .education-fade {
+    animation: none;
+  }
+}
+
+.result-tables {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.result-table {
+  max-width: 680px;
+}
+
+.result-heading {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.result-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.result-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 18px;
+}
+
+.result-row.is-emphasis {
+  font-weight: 500;
+}
+
+.result-subtitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.result-leader {
+  flex: 1;
+  min-width: 24px;
+  border-bottom: 1px dotted rgba(38, 35, 31, 0.35);
+  transform: translateY(-5px);
+}
+
+/* Codes in one column and titles in a second, lined up row by row */
+.result-table.is-index {
+  max-width: none;
+}
+
+.index-rows {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 14px;
+}
+
+.index-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: baseline;
+  padding: 7px 0;
+  font-size: 18px;
+}
+
+.index-code {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+/* The leader stretches so every title starts at the same point */
+.index-code .result-leader {
+  min-width: 40px;
+}
+
+.index-title {
+  color: #77716a;
+}
+
+.result-mark {
+  font-variant-numeric: tabular-nums;
+}
+
+.result-note {
+  width: 92px;
+  text-align: right;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.result-note.is-distinction {
+  color: var(--accent);
+}
+
+/* Grades start at the same point so the letters line up and any star sits after them */
+.result-note.is-grade {
+  width: 36px;
+  padding-left: 14px;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .education-dates {
+    flex-basis: auto;
+    padding-top: 0;
+  }
+
+  .result-note {
+    width: auto;
+    min-width: 24px;
+  }
+
+  .result-note.is-grade {
+    width: 32px;
+    padding-left: 8px;
+  }
+
+  /* On small screens the module title drops under its code */
+  .index-rows,
+  .index-row {
+    grid-template-columns: 1fr;
+  }
+
+  .index-title {
+    font-size: 15px;
+  }
+
+  .index-code .result-leader {
+    display: none;
+  }
+}

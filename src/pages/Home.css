@@ -1,0 +1,143 @@
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.home-cover,
+.home-contents {
+  flex: 1 1 560px;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 96px 72px 56px;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-cover {
+  justify-content: center;
+  border-right: 1px solid var(--rule);
+}
+
+.home-name {
+  margin: 0;
+  font-size: clamp(56px, 7vw, 88px);
+  line-height: 1.05;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.home-tagline {
+  margin: 22px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.home-intro {
+  margin: 40px 0 0;
+  font-size: 21px;
+  line-height: 1.7;
+  max-width: 26em;
+}
+
+.drop-cap {
+  float: left;
+  font-size: 70px;
+  line-height: 0.82;
+  padding: 8px 10px 0 0;
+  color: var(--accent);
+}
+
+.footnote-ref {
+  font-size: 0.62em;
+  vertical-align: super;
+  line-height: 0;
+  padding: 0 1px;
+}
+
+.contents {
+  margin: auto 0;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contents-heading {
+  margin: 0 0 20px;
+  font-size: 32px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.contents-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 14px 0;
+  font-size: 26px;
+  color: var(--ink);
+}
+
+.contents-row:hover {
+  color: var(--ink);
+}
+
+.contents-numeral {
+  width: 44px;
+  flex: none;
+  font-size: 18px;
+  color: var(--accent);
+}
+
+.contents-leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(38, 35, 31, 0.4);
+  transform: translateY(-6px);
+}
+
+.contents-page {
+  font-size: 18px;
+  color: var(--muted);
+}
+
+.contents-row:hover .ink-underline {
+  background-size: 100% 1px;
+}
+
+.footnotes {
+  padding-top: 48px;
+}
+
+.footnotes ol {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* Stack the two halves on narrow screens */
+@media (max-width: 1119px) {
+  .home-cover {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-cover,
+  .home-contents {
+    padding: 56px 24px 40px;
+  }
+
+  .home-tagline {
+    white-space: normal;
+  }
+}
