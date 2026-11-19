@@ -37,8 +37,7 @@ function Results({ table }: { table: ResultTable }) {
   if (isIndex) {
     return (
       <div className="result-table is-index">
-        <h3 className="result-heading">{table.heading}</h3>
-        <ul className="result-rows index-rows">
+        <ul className="result-rows index-rows" aria-label={table.heading}>
           {table.rows.map((row) => (
             <li key={row.name} className="index-row">
               <span className="index-code">
@@ -83,7 +82,14 @@ function Results({ table }: { table: ResultTable }) {
 
 function Entry({ entry }: { entry: EducationEntry }) {
   const [viewIndex, setViewIndex] = useState(0)
+  // Only fade when someone switches views, not when the page first appears
+  const [switched, setSwitched] = useState(false)
   const view = entry.views[viewIndex]
+
+  const selectView = (index: number) => {
+    setViewIndex(index)
+    setSwitched(true)
+  }
 
   return (
     <section className="education-entry">
@@ -101,10 +107,13 @@ function Entry({ entry }: { entry: EducationEntry }) {
             label={`${entry.stage} results`}
             options={entry.views.map((option) => option.label)}
             selected={viewIndex}
-            onSelect={setViewIndex}
+            onSelect={selectView}
           />
         ) : null}
-        <div key={view.label} className="result-tables education-fade">
+        <div
+          key={view.label}
+          className={switched ? 'result-tables education-fade' : 'result-tables'}
+        >
           {view.tables.map((table) => (
             <Results key={table.heading} table={table} />
           ))}
@@ -116,7 +125,13 @@ function Entry({ entry }: { entry: EducationEntry }) {
 
 function Education() {
   const [stageIndex, setStageIndex] = useState(0)
+  const [switched, setSwitched] = useState(false)
   const entry = education[stageIndex]
+
+  const selectStage = (index: number) => {
+    setStageIndex(index)
+    setSwitched(true)
+  }
 
   return (
     <>
@@ -124,10 +139,10 @@ function Education() {
         label="Stage of study"
         options={education.map((option) => option.stage)}
         selected={stageIndex}
-        onSelect={setStageIndex}
+        onSelect={selectStage}
         large
       />
-      <div key={entry.stage} className="education-fade">
+      <div key={entry.stage} className={switched ? 'education-fade' : undefined}>
         <Entry entry={entry} />
       </div>
     </>
