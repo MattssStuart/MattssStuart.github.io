@@ -12,6 +12,7 @@ function ChapterFooter({ folio }: { folio?: number }) {
               <a
                 className="ink-underline"
                 href={footnote.href}
+                data-umami-event={footnote.event}
                 target="_blank"
                 rel="noopener noreferrer"
               >

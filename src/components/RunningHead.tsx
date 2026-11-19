@@ -10,7 +10,12 @@ type RunningHeadProps = {
 function RunningHead({ current, flipRef }: RunningHeadProps) {
   return (
     <nav className="running-head" aria-label="Contents">
-      <Link ref={flipRef('home')} className="ink-underline flip" to="/">
+      <Link
+        ref={flipRef('home')}
+        className="ink-underline flip"
+        to="/"
+        data-umami-event="Header: Home"
+      >
         Home
       </Link>
       {chapters
@@ -21,6 +26,7 @@ function RunningHead({ current, flipRef }: RunningHeadProps) {
             ref={flipRef(`chapter:${chapter.to}`)}
             className="ink-underline flip"
             to={chapter.to}
+            data-umami-event={`Header: ${chapter.title}`}
           >
             {chapter.numeral} {chapter.title}
           </Link>

@@ -32,7 +32,12 @@ function Home() {
         <nav className="contents" aria-label="Contents">
           <h2 className="contents-heading">Contents</h2>
           {chapters.map((entry) => (
-            <Link key={entry.to} className="contents-row" to={entry.to}>
+            <Link
+              key={entry.to}
+              className="contents-row"
+              to={entry.to}
+              data-umami-event={`Contents: ${entry.title}`}
+            >
               <span className="contents-numeral">{entry.numeral}</span>
               <span className="contents-title ink-underline">{entry.title}</span>
               <span className="contents-leader" aria-hidden="true" />
@@ -50,6 +55,7 @@ function Home() {
                 <a
                   className="ink-underline"
                   href={footnote.href}
+                  data-umami-event={footnote.event}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

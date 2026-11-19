@@ -10,6 +10,7 @@ export type Footnote = {
   href: string
   label: string
   note: string
+  event: string
 }
 
 export const chapters: ChapterLink[] = [
@@ -39,17 +40,23 @@ export const footnotes: Footnote[] = [
     href: `${import.meta.env.BASE_URL}cv.pdf`,
     label: 'Curriculum vitae',
     note: ', available as a PDF.',
+    event: 'Open CV',
   },
   {
     id: 'fn2',
     href: 'https://github.com/MattssStuart',
     label: 'github.com/MattssStuart',
     note: '',
+    event: 'Open GitHub',
   },
   {
     id: 'fn3',
     href: 'https://www.linkedin.com/in/matthew-stuart-4b3b29424',
     label: 'linkedin.com/in/matthew-stuart-4b3b29424',
     note: '',
+    event: 'Open LinkedIn',
   },
 ]
+
+// Public Web3Forms key that routes contact form messages to Matthew's inbox
+export const contactFormKey = 'caf36bce-d9af-4aed-a61a-90c9d133b01f'

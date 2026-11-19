@@ -1,0 +1,142 @@
+.contact {
+  margin-top: 56px;
+}
+
+.contact-form,
+.contact-sent {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.contact-sent {
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 32px;
+}
+
+.contact-row .contact-field {
+  flex: 1 1 220px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-field label {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-field input {
+  border: 0;
+  border-bottom: 1px solid rgba(38, 35, 31, 0.35);
+  background: transparent;
+  padding: 6px 2px;
+  font-family: inherit;
+  font-size: 21px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(38, 35, 31, 0.3);
+  background-color: rgba(255, 255, 255, 0.35);
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-field input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.contact-field textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact-trap {
+  position: absolute;
+  left: -9999px;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+
+.contact-submit {
+  border: 1px solid var(--accent);
+  background-color: transparent;
+  padding: 12px 28px;
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.contact-submit:hover:not(:disabled) {
+  background-color: var(--accent);
+  color: var(--paper);
+}
+
+.contact-submit:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.contact-error {
+  margin: 0;
+  font-size: 17px;
+  color: var(--accent);
+}
+
+.contact-sent {
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.contact-sent p {
+  margin: 0;
+}
+
+.contact-again {
+  margin-top: 24px;
+  border: 0;
+  padding: 4px 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--accent);
+  cursor: pointer;
+}

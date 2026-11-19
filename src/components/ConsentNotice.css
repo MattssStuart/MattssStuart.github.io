@@ -1,0 +1,43 @@
+.consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px 32px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.consent-text {
+  margin: 0;
+}
+
+.consent-mark {
+  padding-right: 8px;
+  color: var(--accent);
+}
+
+.consent-actions {
+  display: flex;
+  gap: 24px;
+}
+
+.consent-actions button {
+  border: 0;
+  margin: 0;
+  padding: 6px 0;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--accent);
+  cursor: pointer;
+}

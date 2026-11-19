@@ -20,6 +20,7 @@ function Switch({ label, options, selected, onSelect, large }: SwitchProps) {
           type="button"
           className="ink-underline"
           aria-pressed={index === selected}
+          data-umami-event={`Education: ${option}`}
           onClick={() => onSelect(index)}
         >
           {option}
